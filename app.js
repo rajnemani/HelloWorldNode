@@ -3,8 +3,8 @@ var http = require('http');
 
 
 var status = "";
-var address = process.env.MONGODBPORT27017TCPADDR;
-var port = process.env.MONGODBPORT27017TCPPORT;
+var address = process.env.MONGODB_PORT_27017_TCP_ADDR;
+var port = process.env.MONGODB_PORT_27017_TCP_PORT;
 status+= "Address: " + address + " Port: " + port;
 
 http.createServer(function (req, res) {
