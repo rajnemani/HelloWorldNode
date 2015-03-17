@@ -3,6 +3,10 @@ var http = require('http');
 
 
 var status = "";
+var address = process.env.MONGODBPORT27017TCPADDR;
+var port = process.env.MONGODBPORT27017TCPPORT;
+status+= "Address: " + address + " Port: " + port;
+
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
 
@@ -12,6 +16,9 @@ http.createServer(function (req, res) {
     MongoClient.connect("mongodb://ec2-54-69-153-27.us-west-2.compute.amazonaws.com:27017/exampleDb", function(err, db) {
         if(!err) {
             status+= "We are connected";
+            db.createCollection('usercollection', function(err, collection) {});
+            var collection = db.collection('usercollection');
+            collection.insert({ "username" : "testuser1", "email" : "testuser1@testdomain.com" }, function(err,result) {});
         }
         else {
 
